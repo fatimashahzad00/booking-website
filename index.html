@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Booking Website</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --background-color: #f4f4f4;
+            --text-color: #333;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px var(--shadow-color);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hero {
+            background-image: url('https://source.unsplash.com/1600x900/?travel');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .search-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .search-form input,
+        .search-form select {
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-form button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .search-form button:hover {
+            background-color: #27ae60;
+        }
+
+        .featured-destinations {
+            padding: 80px 0;
+        }
+
+        .featured-destinations h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+        }
+
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            transition: transform 0.3s ease;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destination-card-content {
+            padding: 20px;
+        }
+
+        .destination-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .destination-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form input,
+            .search-form select,
+            .search-form button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">TravelEase</div>
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Discover Your Next Adventure</h1>
+                <form class="search-form">
+                    <input type="text" placeholder="Where to?">
+                    <input type="date" placeholder="Check-in">
+                    <input type="date" placeholder="Check-out">
+                    <select>
+                        <option value="">Guests</option>
+                        <option value="1">1 Guest</option>
+                        <option value="2">2 Guests</option>
+                        <option value="3">3 Guests</option>
+                        <option value="4">4+ Guests</option>
+                    </select>
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="featured-destinations container" id="destinations">
+            <h2>Featured Destinations</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/300x200/?paris" alt="Paris">
+                    <div class="destination-card-content">
+                        <h3>Paris, France</h3>
+                        <p>Experience the city of love and lights.</p>
+                        <a href="#" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/300x200/?tokyo" alt="Tokyo">
+                    <div class="destination-card-content">
+                        <h3>Tokyo, Japan</h3>
+                        <p>Explore the perfect blend of tradition and modernity.</p>
+                        <a href="#" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/300x200/?new-york" alt="New York">
+                    <div class="destination-card-content">
+                        <h3>New York, USA</h3>
+                        <p>Discover the city that never sleeps.</p>
+                        <a href="#" class="btn">Book Now</a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <img src="https://source.unsplash.com/300x200/?bali" alt="Bali">
+                    <div class="destination-card-content">
+                        <h3>Bali, Indonesia</h3>
+                        <p>Relax in paradise beaches and lush landscapes.</p>
+                        <a href="#" class="btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 TravelEase. All rights reserved.</p>
+    </footer>
+</body>
+</html>
